@@ -5,7 +5,7 @@ This is a tool for c++ oiers to quickly create their source files and some addit
 ## Usage
 
 ### Arguments:
-1. Input your Project Name."
+1. Input your Project Name.
 2. Use stdc++.h: 1 for using,0 for not using.
 3. Create a batch tool to Compare results.1 for using,0 for not using.0 is the default value.
 
@@ -22,4 +22,7 @@ blog:https://blog.rswork.heliohost.org
 
 ## Report a bug or come up with a suggestion
 New an issue in this repo.
-            
+Pull requests are also  acceptable.
+
+## In Addition
+If you like this project.don't forget to give a  star.
