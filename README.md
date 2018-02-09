@@ -4,6 +4,9 @@ https://kxxt.github.io/oiinit
 ## Description
 This is a tool for c++ oiers to quickly create their source files and some additional files.
 
+## Runtime
+Windows Xp or higher,with .net framework 2.0 at least installed.
+
 ## Usage
 
 ### Arguments:
