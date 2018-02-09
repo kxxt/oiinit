@@ -1,4 +1,6 @@
 # oiinit
+https://kxxt.github.io/oiinit
+
 ## Description
 This is a tool for c++ oiers to quickly create their source files and some additional files.
 
@@ -13,7 +15,7 @@ This is a tool for c++ oiers to quickly create their source files and some addit
 1. `oiinit Xxx 1 0`
 2. `oiinit "gsjh sjjh" 0 1`
 
-## Contract author
+## Contract the author
 email:renpengfei@rswork.heliohost.org
 
 wire:@rsworktech
