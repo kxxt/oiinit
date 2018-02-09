@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("oiinit")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("OI INIT CMD UTILITY FOR C++ OIERS.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("oiinit")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Believers in Science Studio")]
+[assembly: AssemblyProduct("OI INIT CMD UTILITY FOR C++ OIERS.")]
+[assembly: AssemblyCopyright("Copyright © Believers in Science Studio 2018")]
+[assembly: AssemblyTrademark("Believers in Science Studio")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型
