@@ -1,0 +1,9 @@
+@echo off
+color F4
+:loop
+	mkdata
+	"#REPLACESIGN#"
+	"_#REPLACESIGN#"
+	fc "#REPLACESIGN#.out" "_#REPLACESIGN#.out"
+	if errorlevel == 1 pause
+goto loop

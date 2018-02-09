@@ -1,6 +1,6 @@
 ﻿#include<cstdlib>
 #include<cmath>
-#include<array>
+
 #include<algorithm>
 #include<bitset>
 #include<cstdio>
