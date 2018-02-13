@@ -9,10 +9,13 @@ Windows Xp or higher,with .net framework 2.0 at least installed.
 
 ## Usage
 
-### Arguments:
+### Arguments
 1. Input your Project Name.
-2. Use stdc++.h: 1 for using,0 for not using.
-3. Create a batch tool to Compare results.1 for using,0 for not using.0 is the default value.
+2. Use stdc++.h: 1 for using,others for not using.(not using by default)
+3. Create a batch tool to Compare results.1 for using,others for not using.(not using by default)
+
+### Advanced Functions (DIY it on your own)
+You can modify the templates in the directory "oiinit_bin".
 
 ### Examples(cmd)
 1. `oiinit Xxx 1 0`
