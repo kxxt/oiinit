@@ -11,7 +11,6 @@ namespace oiinit
 	static class Program
 	{
 		private static string dsgn = "\\";
-		private static bool IsWinNT = true;
 		static string ProcessPath(this string ins, string _ = null)
 		{
 			if (_ == null)
@@ -22,9 +21,8 @@ namespace oiinit
 		}
 		static Program()
 		{
-			IsWinNT = (Environment.OSVersion.Platform == PlatformID.Win32NT);
 			string endl = Environment.NewLine;
-			if (!IsWinNT)
+			if (Environment.OSVersion.Platform != PlatformID.Win32NT)
 			{
 				dsgn = "/";
 			}
@@ -43,7 +41,7 @@ namespace oiinit
 				mainT[0] = File.ReadAllText(bin + "main.template.cpp");
 
 
-				batT = IsWinNT ? File.ReadAllText(bin + "template.bat.dat") : File.ReadAllText(bin + "template.sh.dat");
+				batT = Environment.OSVersion.Platform != PlatformID.Win32NT ? File.ReadAllText(bin + "template.sh.dat") : File.ReadAllText(bin + "template.bat.dat");
 				CppT[0] = File.ReadAllText(bin + "template.template.cpp");
 			}
 			catch (Exception e)
@@ -70,7 +68,7 @@ namespace oiinit
 
 		}
 
-		static void Work(string sgn, string use, string create, string createin)
+		static void Work(string sgn, string use, string create)
 		{
 
 			ProcessSgn(sgn);
@@ -91,28 +89,21 @@ namespace oiinit
 			CppT[1] = CppT[0].Replace("#MAIN_BLOCK#", mainT[1]);
 			CppT[2] = CppT[0].Replace("#MAIN_BLOCK#", mainT[2]);
 			CppT[0] = CppT[0].Replace("#MAIN_BLOCK#", mainT[0]);
-			string workdir = Environment.CurrentDirectory + dsgn + sgn + dsgn;
-			Directory.CreateDirectory(Environment.CurrentDirectory + dsgn + sgn);
+			string workdir = env + sgn + dsgn;
+			Directory.CreateDirectory(env + sgn);
 			File.Create(workdir + sgn + ".cpp").Close();
 			File.WriteAllText(workdir + sgn + ".cpp", CppT[0]);
 			if (create.Trim() == "1")
 			{
 				File.Create(workdir + "_" + sgn + ".cpp").Close();
 				File.Create(workdir + "mkdata.cpp").Close();
-				if (IsWinNT)
-					File.Create(workdir + "cpr.bat").Close();
-				else
-					File.Create(workdir + "cpr.sh").Close();
+				File.Create(workdir + "cpr.bat").Close();
 				File.WriteAllText(workdir + "_" + sgn + ".cpp", CppT[1]);
 				File.WriteAllText(workdir + "mkdata.cpp", CppT[2]);
-				if (IsWinNT) File.WriteAllText(workdir + "cpr.bat", batT);
-				else File.WriteAllText(workdir + "cpr.sh", batT);
+				if (Environment.OSVersion.Platform != PlatformID.Win32NT) File.WriteAllText(workdir + "cpr.sh", batT);
+				else File.WriteAllText(workdir + "cpr.bat", batT);
 			}
 
-			if (createin.Trim() == "1")
-			{
-				File.Create(workdir + sgn + ".in").Close();
-			}
 
 
 
@@ -241,16 +232,13 @@ namespace oiinit
 					switch (args.Length)
 					{
 						case 1:
-							Work(args[0], "", "", "");
+							Work(args[0], "", "");
 							break;
 						case 2:
-							Work(args[0], args[1], "", "");
+							Work(args[0], args[1], "");
 							break;
 						case 3:
-							Work(args[0], args[1], args[2], "");
-							break;
-						case 4:
-							Work(args[0], args[1], args[2], args[3]);
+							Work(args[0], args[1], args[2]);
 							break;
 						default:
 							Output(ConsoleColor.Black, ConsoleColor.Yellow,
@@ -277,7 +265,7 @@ namespace oiinit
 		private static void ShowSplash()
 		{
 			Output(ConsoleColor.Black, ConsoleColor.DarkBlue, "************************************************************************\r\n");
-			Output(ConsoleColor.Black, ConsoleColor.DarkBlue, "* (C)Copyright Believers in Science Studio 2018  (ver 3.00)            *\r\n");
+			Output(ConsoleColor.Black, ConsoleColor.DarkBlue, "* (C)Copyright Believers in Science Studio 2018  (ver 2.00)            *\r\n");
 			Output(ConsoleColor.Black, ConsoleColor.Blue, "* This is a freeware,you can copy,share or modify it freely            *\r\n" +
 															 "* under the LGPL Licence.You can modify the templates in dir:oiinit_bin*\r\n");
 			Output(ConsoleColor.Black, ConsoleColor.DarkCyan, "* GitHub:https://github.com/kxxt/oiinit/                               *\r\n" +
@@ -290,11 +278,9 @@ namespace oiinit
 		private static void ShowHelp()
 		{
 			Console.WriteLine("arg0:Input your Project Name.");
-			Console.WriteLine("arg1:[optional] Use stdc++.h: 1 for using,others for not using.");
-			Console.WriteLine("arg2:[optional] Create a batch tool to compare results.\r\n" +
+			Console.WriteLine("arg1:Use stdc++.h: 1 for using,others for not using.");
+			Console.WriteLine("arg2[optional]:Create a batch tool to compare results.\r\n" +
 							  "\t\t1 for using,others for not using(default).");
-			Console.WriteLine("arg3:[optional] Create a blank data input file , 1 for using" +
-							  "\t\t ,others for not using.");
 		}
 	}
 }
