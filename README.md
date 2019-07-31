@@ -22,11 +22,9 @@ You can modify the templates in the directory "oiinit_bin".
 2. `oiinit "gsjh sjjh" 0 1`
 
 ## Contract the author
-email:renpengfei@rswork.heliohost.org
+email:kxxtbiss@outlook.com
 
 wire:@rsworktech
-
-blog:https://blog.rswork.heliohost.org
 
 ## Report a bug or come up with a suggestion
 New an issue in this repo.
